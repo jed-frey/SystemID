@@ -1,7 +1,8 @@
 while [ 1 ];
 do
-git add *.ipnb
+git add *.ipynb
 git add *.py
+git add *.md
 git commit -a -m "`date`"
 git push
 sleep 900

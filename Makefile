@@ -1,7 +1,20 @@
-.DEFAULT: none
-.PHONY: none
-none:
-	@echo No default make target.
+VENV?=.venv
+PIP?=${VENV}/bin/pip
+BASE?=setuptools wheel runcython3
 
-venv:
-	@python3 -mvenv venv
+
+.DEFAULT: venv
+venv: ${VENV}
+${VENV}: requirements.txt
+	python3 -mvenv ${VENV}
+	${PIP} install --upgrade pip
+	${PIP} install --upgrade ${BASE}
+	${PIP} install -r requirements.txt
+
+.PHONY: clean
+clean:
+	@git clean -xfd
+
+requirements.txt:
+	@echo requirements.txt is missing.
+

@@ -5,3 +5,6 @@ scipy
 matplotlib
 numba
 
+git+https://github.com/python-control/Slycot.git
+git+https://github.com/python-control/python-control.git
+

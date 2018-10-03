@@ -1,20 +1,9 @@
-VENV?=.venv
-PIP?=${VENV}/bin/pip
-BASE?=setuptools wheel runcython3
+# Config
 
+# Environments to setup for this project
+# Available options: python arduino
+ENVS:=python
 
-.DEFAULT: venv
-venv: ${VENV}
-${VENV}: requirements.txt
-	python3 -mvenv ${VENV}
-	${PIP} install --upgrade pip
-	${PIP} install --upgrade ${BASE}
-	${PIP} install -r requirements.txt
-
-.PHONY: clean
-clean:
-	@git clean -xfd
-
-requirements.txt:
-	@echo requirements.txt is missing.
-
+## make_sandwich includes
+# https://github.com/jed-frey/make_sandwich
+include .mk_inc/env.mk
